@@ -20,8 +20,10 @@ def main(page: ft.Page):
 
     nick = ft.TextField(label="Nome de Invocador",hint_text="Nickname", max_length=18)
     tag = ft.TextField(label="Tagline",prefix_text="#",hint_text="BR1", max_length=5)
-    page.add(nick,tag, ft.IconButton(icon=ft.Icons.SEARCH, on_click=search))
-    page.add()
+    buscar = ft.IconButton(icon=ft.Icons.SEARCH, on_click=search)
+    page.add(
+        ft.Row(controls=[nick, tag, buscar])
+    )
     #page.add(ft.Text(str(user), size=30, color="blue"))
 
 
