@@ -3,3 +3,6 @@ class Summoner:
         self.nickname = nickname
         self.tagline = tagline
         self.puuid = puuid
+
+    
+    
