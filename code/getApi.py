@@ -34,10 +34,13 @@ def get_summoner( server :str, nick :str, tagline :str):
     url = f"https://{server}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{nick}/{tagline}?api_key={get_api_key()}"
     response = requests.get(url)
     req = response.json()
-    playerInfo = requests.get(f"https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{req["puuid"]}?api_key={get_api_key()}")
-    playerInfo =playerInfo.json()
-    return playerInfo
+    if response.status_code == 200:
+        playerInfo = requests.get(f"https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{req["puuid"]}?api_key={get_api_key()}")
+        playerInfo =playerInfo.json()
+        print(playerInfo)
+        return playerInfo
 
+    return None
 
 
 __all__ = ['get_summoner']
